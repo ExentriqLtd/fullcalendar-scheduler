@@ -4847,6 +4847,9 @@ var ResourceRow = /** @class */ (function (_super) {
         var _this = _super.call(this, view) || this;
         _this.resource = resource;
         _this.eventRenderer.designatedResource = _this.resource;
+        if (typeof resource.isExpanded !== 'undefined') {
+            _this.isExpanded = resource.isExpanded;
+        }
         return _this;
     }
     ResourceRow.prototype.renderSkeleton = function () {

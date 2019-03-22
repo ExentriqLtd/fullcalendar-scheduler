@@ -16,6 +16,9 @@ export default class ResourceRow extends EventRow {
     super(view)
     this.resource = resource
     this.eventRenderer.designatedResource = this.resource
+    if (typeof resource.isExpanded !== 'undefined') {
+      this.isExpanded = resource.isExpanded;
+    }
   }
 
 
