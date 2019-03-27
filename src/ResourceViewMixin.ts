@@ -9,7 +9,7 @@ export interface ResourceViewInterface {
 
 
 export default class ResourceViewMixin extends Mixin implements ResourceViewInterface {
-
+  renderPaused: false
   resourceTextFunc: any
   isResourcesRendered: boolean // (initialized after class)
 
@@ -169,12 +169,16 @@ export default class ResourceViewMixin extends Mixin implements ResourceViewInte
 
 
   handleResourceAdd(resource) {
-    this.requestResourceRender(resource)
+    if (!this.renderPaused) {
+      this.requestResourceRender(resource)
+    }
   }
 
 
   handleResourceRemove(resource) {
-    this.requestResourceUnrender(resource)
+    if (!this.renderPaused) {
+      this.requestResourceUnrender(resource)
+    }
   }
 
 

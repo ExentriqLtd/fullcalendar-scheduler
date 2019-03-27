@@ -274,10 +274,14 @@ var ResourceViewMixin = /** @class */ (function (_super) {
     // Resource Change Handling
     // ----------------------------------------------------------------------------------------------
     ResourceViewMixin.prototype.handleResourceAdd = function (resource) {
-        this.requestResourceRender(resource);
+        if (!this.renderPaused) {
+            this.requestResourceRender(resource);
+        }
     };
     ResourceViewMixin.prototype.handleResourceRemove = function (resource) {
-        this.requestResourceUnrender(resource);
+        if (!this.renderPaused) {
+            this.requestResourceUnrender(resource);
+        }
     };
     // Resource Rendering
     // ----------------------------------------------------------------------------------------------
